@@ -13,7 +13,7 @@ function Sidebar(){
             const response = await fetch("https://sigmagpt-0qo3.onrender.com/api/thread");
             const res=await response.json();
             const filteredData=res.map(thread =>({threadId:thread.threadId,title:thread.title}));
-            //console.log(filteredData);
+            console.log("Threads:", res);
             setAllThreads(filteredData);
 
         }catch(err){
