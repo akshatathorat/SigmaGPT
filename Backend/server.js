@@ -10,6 +10,10 @@ const PORT = 8080;
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+    res.send("SigmaGPT Backend is Live 🚀");
+});
+
 app.use("/api", chatRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
