@@ -2,6 +2,7 @@ import "./Sidebar.css";
 import { useContext,useEffect } from "react";
 import {MyContext} from "./MyContext.jsx";
 import{v1 as uuidv1} from "uuid";
+import logo from "./assets/blacklogo.png";
 
 
 function Sidebar(){
@@ -9,7 +10,7 @@ function Sidebar(){
 
     const getAllThreads=async()=>{
         try{
-            const response = await fetch("https://sigmagpt-0qo3.onrender.com/api/threads");
+            const response = await fetch("https://sigmagpt-0qo3.onrender.com/api/thread");
             const res=await response.json();
             const filteredData=res.map(thread =>({threadId:thread.threadId,title:thread.title}));
             //console.log(filteredData);
@@ -68,7 +69,7 @@ function Sidebar(){
     return(
         <section className="sidebar">
             <button onClick={createNewChat}>
-                <img src="src/assets/blacklogo.png" alt="gpt logo" className="logo"></img>
+                <img src={logo} alt="gpt logo" className="logo" > </img>
                 <span><i className="fa-solid fa-pen-to-square"></i></span>
             </button>
 
