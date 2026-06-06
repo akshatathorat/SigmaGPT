@@ -2,7 +2,7 @@ import "./Sidebar.css";
 import { useContext,useEffect } from "react";
 import {MyContext} from "./MyContext.jsx";
 import{v1 as uuidv1} from "uuid";
-import logo from "./assets/blacklogo.png";
+
 
 
 function Sidebar(){
@@ -10,7 +10,7 @@ function Sidebar(){
 
     const getAllThreads=async()=>{
         try{
-            const response = await fetch("https://sigmagpt-0qo3.onrender.com/api/threads");
+            const response = await fetch("http://localhost:8080/api/thread");
             const res=await response.json();
             const filteredData=res.map(thread =>({threadId:thread.threadId,title:thread.title}));
             console.log("Threads:", res);
@@ -38,7 +38,7 @@ function Sidebar(){
         setCurrThreadId(newThreadId);
 
         try{
-            const response=await fetch(`https://sigmagpt-0qo3.onrender.com/api/thread/${newThreadId}`);
+            const response=await fetch(`http://localhost:8080/api/thread/${newThreadId}`);
             const res=await response.json();
             console.log(res);
             setPrevChats(res);
@@ -51,7 +51,7 @@ function Sidebar(){
 
     const deleteThread=async(threadId)=>{
         try{
-            const response=await fetch(`https://sigmagpt-0qo3.onrender.com/api/thread/${threadId}`,{method:"DELETE"});
+            const response=await fetch(`http://localhost:8080/api/thread/${threadId}`,{method:"DELETE"});
             const res=await response.json();
             console.log(res);
 
@@ -69,7 +69,7 @@ function Sidebar(){
     return(
         <section className="sidebar">
             <button onClick={createNewChat}>
-                <img src={logo} alt="gpt logo" className="logo" > </img>
+                <img src="src/assets/blacklogo.png" alt="gpt logo" className="logo" />
                 <span><i className="fa-solid fa-pen-to-square"></i></span>
             </button>
 

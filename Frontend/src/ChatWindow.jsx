@@ -28,7 +28,7 @@ function ChatWindow(){
         try{
 
     const response = await fetch(
-        ("https://sigmagpt-0qo3.onrender.com/api/chat"),
+        ("http://localhost:8080/api/chat"),
         options
     );
 
